@@ -68,6 +68,7 @@ trap 'rm -f "$TMP1" "$TMP2" "$TMP3" "$TMP4"' EXIT HUP INT TERM
     --prefix "$PREFIX" \
     --checkpoint-file "$TMP4" \
     --config-file "$CONFIG" \
+    --board-name FTHR_RevA \
     --sample-input "$SAMPLE_INPUT" \
     --overwrite \
     $COMMON_ARGS "$@"
