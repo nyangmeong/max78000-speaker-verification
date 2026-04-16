@@ -1,0 +1,265 @@
+---
+# YAML template -- requires manual editing, particularly with regard to out_offset and processors
+# Generated for MAX78000 with input format CHW
+
+arch: ai85sv
+dataset: VoxCeleb2_SV
+
+layers:
+  # Layer 0
+  - name: stem_Conv_10  # stem_Conv_10 fused with stem.activate
+    # input shape: (1, 80, 128)
+    data_format: CHW
+    processors: 0x0000000000000001
+    out_offset: 0x0000
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    max_pool: 2
+    pool_stride: 2
+    pool_dilation: [1, 1]
+    activate: Relu
+    # output shape: (16, 40, 64)
+
+  # Layer 1
+  - name: gap_stem_pool.pool  # until add 1, 14
+    # input shape: (16, 40, 64)
+    processors: 0xffff000000000000
+    output_processors: 0xffff000000000000
+    out_offset: 0x2800
+    op: Passthrough
+    write_gap: 1
+    # output shape: (16, 40, 64)
+
+  # Layer 2
+  - name: stage1.conv1_Conv_8  # stage1.conv1_Conv_8 fused with stage1.conv1.activate
+    # input shape: (16, 40, 64)
+    in_sequences: [stem_Conv_10]
+    in_offset: 0x0000
+    processors: 0xffff000000000000
+    output_processors: 0x0000ffff00000000
+    out_offset: 0x0000
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: Relu
+    # output shape: (16, 40, 64)
+
+  # Layer 3
+  - name: stage1.conv2_Conv_8
+    # input shape: (16, 40, 64)
+    processors: 0x0000ffff00000000
+    output_processors: 0xffff000000000000
+    out_offset: 0x2804
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: None
+    write_gap: 1
+    # output shape: (16, 40, 64)
+
+  # Layer 4
+  - name: stage1.add
+    # input shape: (16, 40, 64), (16, 40, 64)
+    in_sequences: [gap_stem_pool.pool, stage1.conv2_Conv_8]
+    processors: 0xffff000000000000
+    in_offset: 0x2800
+    out_offset: 0x0000
+    op: Conv2d  # fake
+    kernel_size: 1x1
+    pad: 0
+    eltwise: Add
+    operands: 2
+    activate: Relu
+    # output shape: (16, 40, 64)
+
+  # Layer 5
+  - name: pool1.pool  # until shortcut 01, 4
+    # input shape: (16, 40, 64)
+    processors: 0x0000ffff00000000
+    out_offset: 0x4000
+    op: Passthrough
+    max_pool: 2
+    pool_stride: 2
+    pool_dilation: [1, 1]
+    # output shape: (16, 20, 32)
+
+  # Layer 6
+  - name: stage2.conv1_Conv_8  # stage2.conv1_Conv_8 fused with stage2.conv1.activate
+    # input shape: (16, 20, 32)
+    processors: 0x0000ffff00000000
+    out_offset: 0x0000
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: Relu
+    # output shape: (32, 20, 32)
+
+  # Layer 7
+  - name: stage2.conv2_Conv_8
+    # input shape: (32, 20, 32)
+    processors: 0x00000000ffffffff
+    out_offset: 0x4004
+    output_processors: 0x00000000ffffffff
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: None
+    write_gap: 1
+    # output shape: (32, 20, 32)
+
+  # Layer 8
+  - name: stage2.shortcut_Conv_8
+    # input shape: (16, 20, 32)
+    in_sequences: [pool1.pool]
+    in_offset: 0x4000
+    processors: 0x0000ffff00000000
+    out_offset: 0x4000
+    op: Conv2d
+    kernel_size: 1x1
+    pad: 0
+    activate: None
+    write_gap: 1
+    # output shape: (32, 20, 32)
+
+  # Layer 9
+  - name: stage2.add
+    # input shape: (32, 20, 32), (32, 20, 32)
+    in_sequences: [stage2.shortcut_Conv_8, stage2.conv2_Conv_8]
+    in_offset: 0x4000
+    processors: 0x00000000ffffffff
+    out_offset: 0x0000
+    op: Conv2d  # fake
+    kernel_size: 1x1
+    pad: 0
+    eltwise: Add
+    operands: 2
+    activate: Relu
+    # output shape: (32, 20, 32)
+
+  # Layer 10
+  - name: pool2.pool  # untilshortcut 01, 4
+    # input shape: (32, 20, 32)
+    processors: 0x00000000ffffffff
+    out_offset: 0x4000
+    op: Passthrough
+    max_pool: 2
+    pool_stride: 2
+    pool_dilation: [1, 1]
+    # output shape: (32, 10, 16)
+
+  # Layer 11
+  - name: stage3.conv1_Conv_8  # stage3.conv1_Conv_8 fused with stage3.conv1.activate
+    # input shape: (32, 10, 16)
+    processors: 0x00000000ffffffff
+    out_offset: 0x6000
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: Relu
+    # output shape: (64, 10, 16)
+
+  # Layer 12
+  - name: stage3.conv2_Conv_8
+    # input shape: (64, 10, 16)
+    processors: 0xffffffffffffffff
+    out_offset: 0x0004
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: None
+    write_gap: 1
+    output_processors: 0xffffffffffffffff
+    # output shape: (64, 10, 16)
+
+  # Layer 13
+  - name: stage3.shortcut_Conv_8
+    # input shape: (32, 10, 16)
+    in_sequences: [pool2.pool]
+    in_offset: 0x4000
+    processors: 0x00000000ffffffff
+    out_offset: 0x0000
+    op: Conv2d
+    kernel_size: 1x1
+    pad: 0
+    activate: None
+    write_gap: 1
+    # output shape: (64, 10, 16)
+
+  # Layer 14
+  - name: stage3.add  # until short cut
+    # input shape: (64, 10, 16), (64, 10, 16)
+    in_sequences: [stage3.shortcut_Conv_8, stage3.conv2_Conv_8]
+    in_offset: 0x0000
+    processors: 0xffffffffffffffff
+    out_offset: 0x6000
+    op: Conv2d  # fake
+    kernel_size: 1x1
+    pad: 0
+    eltwise: Add
+    operands: 2
+    activate: Relu
+    # output shape: (64, 10, 16)
+
+  # Layer 15
+  - name: stage4.conv1_Conv_8  # stage4.conv1_Conv_8 fused with stage4.conv1.activate
+    # input shape: (64, 10, 16)
+    processors: 0xffffffffffffffff
+    out_offset: 0x4000
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: Relu
+    # output shape: (128, 10, 16)
+
+  # Layer 16
+  - name: stage4.conv2_Conv_8
+    # input shape: (128, 10, 16)
+    processors: 0xffffffffffffffff
+    out_offset: 0x0004
+    op: Conv2d
+    kernel_size: 3x3
+    pad: 1
+    activate: None
+    write_gap: 1
+    # output shape: (128, 10, 16)
+
+  # Layer 17
+  - name: stage4.shortcut_Conv_8
+    # input shape: (64, 10, 16)
+    in_offset: 0x6000
+    in_sequences: [stage3.add]
+    processors: 0xffffffffffffffff
+    out_offset: 0x0000
+    op: Conv2d
+    kernel_size: 1x1
+    pad: 0
+    activate: None
+    write_gap: 1
+    # output shape: (128, 10, 16)
+
+  # Layer 18
+  - name: stage4.add
+    # input shape: (128, 10, 16), (128, 10, 16)
+    in_sequences: [stage4.shortcut_Conv_8, stage4.conv2_Conv_8]
+    in_offset: 0x0000
+    processors: 0xffffffffffffffff
+    out_offset: 0x4000
+    op: Conv2d  # fake
+    kernel_size: 1x1
+    pad: 0
+    eltwise: Add
+    operands: 2
+    activate: Relu
+    # output shape: (128, 10, 16)
+
+  # Layer 19
+  - name: fc_Gemm_8  # gap.pool fused with fc_Gemm_8
+    # input shape: (128, 10, 16)
+    processors: 0xffffffffffffffff
+    out_offset: 0x0000
+    op: Linear
+    activate: None
+    avg_pool: [10, 16]
+    pool_stride: 1
+    # output shape: (64,)
