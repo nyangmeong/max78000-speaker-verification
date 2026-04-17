@@ -22,7 +22,7 @@ layers:
     # output shape: (16, 40, 64)
 
   # Layer 1
-  - name: gap_stem_pool.pool  # until add 1, 14
+  - name: gap_stem_pool.pool  # until add 1, 28
     # input shape: (16, 40, 64)
     processors: 0xffff000000000000
     output_processors: 0xffff000000000000
