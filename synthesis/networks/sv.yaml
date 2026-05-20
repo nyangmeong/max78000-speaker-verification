@@ -22,7 +22,7 @@ layers:
     # output shape: (16, 40, 64)
 
   # Layer 1
-  - name: gap_stem_pool.pool  # until add 1, 28
+  - name: gap_stem_pool.pool  # until add 1, 14
     # input shape: (16, 40, 64)
     processors: 0xffff000000000000
     output_processors: 0xffff000000000000
@@ -245,15 +245,25 @@ layers:
     in_offset: 0x0000
     processors: 0xffffffffffffffff
     out_offset: 0x4000
-    op: Conv2d  # fake
+    op: none
+    eltwise: Add
+    # output shape: (128, 10, 16)
+
+  # Layer 19 - split from stage4.add to work around MAX78000 hardware bug:
+  # 128ch (multi-pass) eltwise+conv in a single layer causes KAT failure.
+  - name: stage4.add_relu
+    # input shape: (128, 10, 16)
+    in_sequences: [stage4.add]
+    in_offset: 0x4000
+    processors: 0xffffffffffffffff
+    out_offset: 0x6000
+    op: Conv2d
     kernel_size: 1x1
     pad: 0
-    eltwise: Add
-    operands: 2
     activate: Relu
     # output shape: (128, 10, 16)
 
-  # Layer 19
+  # Layer 20
   - name: fc_Gemm_8  # gap.pool fused with fc_Gemm_8
     # input shape: (128, 10, 16)
     processors: 0xffffffffffffffff

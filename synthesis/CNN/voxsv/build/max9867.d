@@ -1,0 +1,24 @@
+/home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Examples/MAX78000/CNN/voxsv/build/max9867.o: \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/MiscDrivers/CODEC/max9867.c \
+ /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/PeriphDrivers/Include/MAX78000/i2c.h \
+ /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/PeriphDrivers/Include/MAX78000/mxc_sys.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/PeriphDrivers/Include/MAX78000/mxc_device.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/max78000.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/5.9.0/Core/Include/core_cm4.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/5.9.0/Core/Include/cmsis_version.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/5.9.0/Core/Include/cmsis_compiler.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/5.9.0/Core/Include/cmsis_gcc.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/5.9.0/Core/Include/mpu_armv7.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/system_max78000.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/gcr_regs.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/PeriphDrivers/Include/MAX78000/mxc_errors.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/PeriphDrivers/Include/MAX78000/mxc_pins.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/PeriphDrivers/Include/MAX78000/gpio.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/gpio_regs.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/lpgcr_regs.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/gcr_regs.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/i2c_regs.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/CMSIS/Device/Maxim/MAX78000/Include/dma_regs.h \
+ /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Libraries/MiscDrivers/CODEC/max9867.h

@@ -1,0 +1,30 @@
+Info : CMSIS-DAP: SWD  Supported
+Info : CMSIS-DAP: FW Version = 2.0.0
+Info : CMSIS-DAP: Serial# = 042317022187ca1b00000000000000000000000097969906
+Info : CMSIS-DAP: Interface Initialised (SWD)
+Info : SWCLK/TCK = 1 SWDIO/TMS = 1 TDI = 0 TDO = 0 nTRST = 0 nRESET = 1
+Info : CMSIS-DAP: Interface ready
+Info : clock speed 2000 kHz
+Info : SWD DPIDR 0x2ba01477
+Info : max32xxx.cpu: hardware has 6 breakpoints, 4 watchpoints
+Info : max32xxx.cpu: external reset detected
+Info : starting gdb server for max32xxx.cpu on pipe
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x21000000 pc: 0x100053a2 msp: 0x2001ffe0
+Info : SWD DPIDR 0x2ba01477
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x81000000 pc: 0x00002120 msp: 0x20003ff0
+Info : Listening on port 6666 for tcl connections
+Info : Listening on port 4444 for telnet connections
+Info : accepting 'gdb' connection from pipe
+Info : SWD DPIDR 0x2ba01477
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x81000000 pc: 0x00002120 msp: 0x20003ff0
+Info : Padding image section 0 at 0x10062924 with 12 bytes
+Info : SWD DPIDR 0x2ba01477
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x81000000 pc: 0x00002120 msp: 0x20003ff0
+Info : SWD DPIDR 0x2ba01477
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x81000000 pc: 0x00002120 msp: 0x20003ff0
+Info : dropped 'gdb' connection

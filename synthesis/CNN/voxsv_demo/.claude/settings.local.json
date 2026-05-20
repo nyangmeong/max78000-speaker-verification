@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/bin/python -c ':*)",
+      "Bash(.venv/bin/python -c \"import resampy, soundfile; print\\('ok'\\)\")",
+      "Bash(.venv/bin/python -c \"import librosa; print\\('librosa ok'\\)\")",
+      "Bash(.venv/bin/python -c \"import scipy; print\\('scipy ok'\\)\")",
+      "Bash(.venv/bin/python -c \"import scipy.signal; print\\('scipy.signal ok'\\)\")",
+      "Bash(.venv/bin/python -c \"import distiller; print\\('distiller ok'\\)\")",
+      "Bash(chmod +x /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Examples/MAX78000/CNN/voxsv_demo/gen_db.sh)",
+      "Bash(make -r -j8 --output-sync=target --no-print-directory TARGET=MAX78000 BOARD=FTHR_RevA MAXIM_PATH=/home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk PROJECT=voxsv_demo)",
+      "Bash(ls /home/jaeu/Documents/Source/AI/ai8x-synthesis/trained/ai85-voxsv*)",
+      "Bash(bash -x /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Examples/MAX78000/CNN/voxsv_demo/gen_db.sh)",
+      "Bash(/home/jaeu/Documents/Source/AI/ai8x-training/.venv/bin/python -c ':*)",
+      "Bash(ls /home/jaeu/Documents/Source/AI/ai8x-training/models/*.py)",
+      "Bash(rm /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Examples/MAX78000/CNN/voxsv_demo/gen_db.sh)",
+      "Bash(rm /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Examples/MAX78000/CNN/voxsv_demo/db_gen/record_wav.py)",
+      "Bash(rm /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Examples/MAX78000/CNN/voxsv_demo/db_gen/generate_speaker_db.py)",
+      "Bash(rm -rf /home/jaeu/Documents/Source/AI/ai8x-synthesis/sdk/Examples/MAX78000/CNN/voxsv_demo/db_gen/db/)"
+    ]
+  }
+}
